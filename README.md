@@ -1,3 +1,3 @@
 # uff-igor
-* Repositório para trabalhos e deveres da uff
+* Repositório de trabalhos, resumos e deveres da uff que não estão no GOOGLE DRIVE
 * Dividido por matérias
