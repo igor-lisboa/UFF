@@ -1,0 +1,20 @@
+SMAP
+login_jsp.java
+JSP
+*S JSP
+*F
++ 0 login.jsp
+login.jsp
++ 1 incCookiesAndParamsTest.jsp
+include/incCookiesAndParamsTest.jsp
+*L
+1,2:50
+5#1,86:53
+3#0,31:139
+34:170,3
+35,2:173
+37:175,3
+38,5:178
+43:183,3
+44,9:186
+*E

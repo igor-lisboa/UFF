@@ -1,0 +1,24 @@
+drop table users;
+
+
+CREATE TABLE users
+
+(    
+   ID INT not null primary key
+        GENERATED ALWAYS AS IDENTITY
+        (START WITH 1, INCREMENT BY 1),  
+  cpf varchar(14) NOT NULL UNIQUE,
+  senha varchar(20) NOT NULL DEFAULT '000',
+  pin varchar(80) NOT NULL DEFAULT '@123',
+  nome varchar(80) NOT NULL,
+  email varchar(80) NOT NULL UNIQUE,
+  acesso timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  admin int DEFAULT 0
+);
+
+
+INSERT INTO users (users.CPF, users.senha, users.pin, users.nome, users.email, users.acesso, users.admin) VALUES
+('987.654.321-00', '123', '@1', 'Lauro Kozovits', 'lauro@ic.uff.br', '2019-04-1 00:00:17', 1),
+('409.097.837-80', '000', '@2', 'Clark Kent', 'superman@gmail.com', '2019-04-1 00:00:17', 0),
+('123.456.789-09', 'derby', '@3', 'Bruce Wayne', 'batman@gmail.com', '2019-04-1 00:00:17', 0);
+

@@ -1,0 +1,9 @@
+SQL drivers
+
+MySQL
+https://dev.mysql.com/downloads/connector/j/
+
+Derby
+http://www.java2s.com/Code/Jar/d/Downloadderbydriverjar.htm
+
+procure por tutoriais sobre conexão Derby e MySQL no Netbeans8.2
