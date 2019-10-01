@@ -422,3 +422,95 @@
 * composto de 5 fases
     * analise e definição de requisitos
     * projeto de sistema e software
+    * implementação e teste de unidade
+    * integração e teste de sistema
+    * operação e manutenção
+* MAIS COMUM EM PROJETOS DE GRANDES SISTEMAS
+    * onde existem requisitos bem entendidos
+    * mudanças limitadas
+* Problemas
+    * dificuldade em responder a mudanças nos requisitos do cliente
+        * divisao inflexiveis
+## desenvolvimento incremental
+* dirigido a planos agil
+* especificacao/desenvolvimento e validacao intercaladas
+* custo reduzido para acomodar mudanças nos requisitos do cliente
+* facil obter feedback
+* possibilidade de entrega mais rapida
+* nao é um processo visivel
+* estrutura do sistema tende a degradar conforme novos incrementos
+* mudancas geram novos requisitos
+    * gerando
+        * trabalho
+        * novos custos
+    * para reduzir custo do trabalho
+        * necessario
+            * prevenir e tolerar mudancas
+* tem 4 fases
+    * prototipacao de software
+        * versao inicial
+            * demonstrar conceitos
+            * maior manutenabilidade
+            * descartado apos desenvolvimento
+            * maior proximidade com as necessidades do usuario
+    * entrega incremental
+        * desenvolvimento e entregar distribuidos em incrementos
+            * requisitos do usuario tem prioridade
+            * menor risco de falha
+                * servicos de maior prioridade tende a ser mais testavel
+    * modelo espiral de boehm
+        * definicao de objetivos
+        * avaliacao
+        * reducao de riscos
+    * rational unified process
+        * processo generico moderno
+        * derivado do trabalho em UML
+## Requisitos
+* descricoes dos servicos do sistema
+* restricoes geradas durante o processo
+* idealmente devem ser
+    * completos
+        * incluir descricoes de todos os servicos necessarios
+    * consistentes
+        * sem conflitos/contradicoes
+* imprecisao dos requisitos causa problemas
+    * ambiguidade
+    * falta de precisao
+* pode ser
+    * base para proposta de um contrato
+    * para o contrato em si
+    * para ambos
+### tipos de Requisitos
+#### USUARIO
+* declaracoes em linguagem natural
+* diagramas dos servicos que o sistema fornecera
+* restricoes operacionais
+#### SISTEMA
+* documento estruturado
+* estabelencendo descricoes detalhadas de
+    * funcoes
+    * servicos
+    * restricoes operacionais
+* define o que deve e o que nao deve ser implementado
+### REQUISITOS FUNCIONAIS
+* explicitam como o sistema deve
+    * reagir a entradas especificas
+    * se comportar em determidas situacoes
+* descrevendo suas funcionalidades
+### REQUISITOS NAO FUNCIONAIS
+* definem propriedades e restricoes do sistema como
+    * confiabilidade
+    * tempo de resposta
+    * ocupacao de area
+* muitas vezes se aplicam ao sistema como um todo
+    * ao inves de caracteristicas individuais ou servicos
+* podem especificar
+    * IDE
+    * linguagem de programacao
+    * metodo de desenvolvimento
+    * requisitos que restringem os existentes
+* afeta arquitetura geral
+    * ao inves de componentes individuais
+* SE NAO FOREM ATENDIDOS
+    * SISTEMA PODE SER TORNAR INUTIL
+* 
