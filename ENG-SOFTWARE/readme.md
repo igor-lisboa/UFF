@@ -465,6 +465,13 @@
     * rational unified process
         * processo generico moderno
         * derivado do trabalho em UML
+        * possui 3 perspectivas
+            * dinamica
+                * mostra fases do modelo ao longo do tempo
+            * estatica
+                * mostra atividades realizadas no processo
+            * pratica
+                * sugere boas praticas a serem usadas
 ## Requisitos
 * descricoes dos servicos do sistema
 * restricoes geradas durante o processo
@@ -573,3 +580,15 @@
     * analise
     * validacao
     * gerenciamento
+### Verificacao de REQUISITOS
+* validacao
+* consistencia
+* completude
+* realismo
+* verificabilidade
+### Revisoes de REQUISITOS
+* deve ser realizada enquanto os requisitos estao sendo formulados
+### DOCUMENTO DE REQUISITOS DE SOFTWARE
+* define O QUE
+* NAO define COMO
+* deve ser organizado de forma que possa ser apresentado para clientes e desenvolvedores
