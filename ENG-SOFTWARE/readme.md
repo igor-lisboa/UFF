@@ -513,4 +513,63 @@
     * ao inves de componentes individuais
 * SE NAO FOREM ATENDIDOS
     * SISTEMA PODE SER TORNAR INUTIL
-* 
+* sao mais criticos que os funcionais
+#### classificados como requisito de produto
+* especificam a maneira que o produto deve se comportar
+    * ex
+        * velocidade de execucao
+        * confiabilidade
+        * O PRODUTO DEVE ESTAR DISPONIVEL PARA TODAS AS CLINICAS DURANTE AS HORAS NORMAIS DE TRABALHO(SEG A SEXTA DE 8 AS 17 HRS). PERIODOS DE NAO OPERACAO DENTRO DO HORARIO NORMAL DE TRABALHO NAO PODEM EXCEDER 5 MINUTOS EM UM DIA
+#### classificados como requisito organizacional
+* consequencia de politicas e procedimentos organizacionais
+    * como
+        * padroes de processos usados
+    * ex
+        * USUARIOS DO SISTEMA DEVEM SE AUTENTICAR COM SEUS CARTOES DE ITENTIFICACAO DA AUTORIDADE DA SAUDE
+#### classificados como requisito externo
+* surgem de fatores externos ao sistema/processo
+    * como
+        * requisitos legais
+        * requisitos reguladores
+    * ex
+        * O SISTEMA DEVE IMPLEMENTAR AS DISPOSICOES DE PRIVACIDADE DOS PACIENTES TAL COMO ESTABELECIDO NA LEI X.
+### REQUISITOS DE DOMINIO
+* criam novos requisitos funcionais
+* restricoes sobre requisitos existentes
+* definem calculos especificos
+* sao restricoes no sistema a partir do dominio de operacao
+* inclui problemas de compreensibilidade
+    * requisitos expressos na linguagem de dominio da aplicacao
+        * costuma nao ser compreendido pelos engenheiros de software
+    * implicitude
+        * especialistas de dominio compreendem tao bem que nao pensam em tornar explicitos seus requisitos
+## ENGENHARIA DE REQUISITOS
+* processo de estabelecer servicos que o cliente necessita do sistema e as restricoes sob as quais ele opera e é desenvolvido
+* ocorre atraves de 4 atividades
+    * elicitacao
+        * tecnicos trabalhando com clientes para levantar dados sobre o dominio da aplicacao, servicos e restricoes operacionais do sistema
+        * inclui
+            * descoberta
+            * classificacao e organizacao
+            * priorizacao e negociacao
+            * especificacao de requisitos
+        * pode adotar
+            * entrevistas
+                * perguntas com stakeholders ( quem vai usar o sistema )
+            * cenarios
+                * exemplos na vida real de como o sistema pode ser usado
+                * ex
+                    * 1. O CLIENTE FOLHEIA O CATALOGO E SELECIONA ITENS P COMPRAR
+                    * 2. O CLIENTE FECHA A COMPRA
+            * casos de uso
+                * responsavel por descrever todas as possiveis interacoes do sistema
+                * identificar atores em cada interacao
+                * exibe cenarios alternativos
+            * etnografia 
+                * requisitos derivados da maneira como as pessoas realmente trabalham
+                * eficaz p compreensao dos processos existentes
+                * nao identifica novos recursos que devem ser adicionados a um sistema
+                * estuda praticas existentes
+    * analise
+    * validacao
+    * gerenciamento
