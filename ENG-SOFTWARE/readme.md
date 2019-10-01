@@ -331,3 +331,94 @@
 * mostrar interacoes
 * mostrar estrutura
 * mostrar comportamento do sistema
+***
+# resumo P1
+## Engenharia de Software
+* aplicação de
+    * abordagem sistematica
+    * disciplinada e quantificavel ao:
+        * desenvolvimento
+        * operação
+        * manutenção
+### Possui grande importancia
+* softwares precisam ser
+    * avançados
+    * confiáveis
+* software possui um custo maior q o hardware
+### Custo
+* manutenção apresenta um custo maior que o desenvolvimento
+## Software ideal
+* manutenabilidade
+* acessibilidade
+* eficiencia
+* confianca
+## Problemas que geram crise do Software
+* obsolecencia (devido a atualizacao das tecnologias)
+* falhas das pessoas responsaveis pelo desenvolvimento
+    * gerentes sem experiencia
+    * resistencia a mudanca
+## Insatisfaçao do Cliente
+* estimativas de prazo e custo imprecisas
+    * escopo mal feito
+    * dificuldade de avaliacao das tecnicas de desenvolvimento
+* insatisfação com o produto
+* qualidade não adequada
+* dificuldade de manter
+    * muitas vezes devido ao custo
+## Tipos de Software
+* generico
+    * sistemas autonomos comercializados
+    * vendidos a qualquer cliente
+    * especificacoes e mudancas dependem exclusivamente do desenvolvedor
+* sob encomenda
+    * encomendado por um cliente
+    * cliente decide especificacoes e mudancas
+## Atividades do processo de Software
+* Especificacao
+    * definicao do software a ser produzido
+    * detalhamento sobre restricoes e funcionamento
+* desenvolvimento
+    * software projetado e programado
+* evolucao
+    * modificacoes para refletir mudancas de requisitos
+    * novas funcionalidades
+### Processo de Software
+* especificacao do modelo de dados 
+* desenvolvimento de interface do usuario
+* organizacao das atividades
+* papeis
+    * responsabilidades das pessoas envolvidas
+* pré e pós condições
+* ferramentas
+* metodos
+* procedimentos
+#### objetivo
+* garantir maior visibilidade da execucao dos projetos
+* previsibilidade dos resultados
+* produtividade e qualidade do produto
+* melhor habilidade para gerenciar a complexidade e ambiente de trabalho
+    * pessoas mais satisfeitas
+## Projeto e Implementação
+* 4 etapas na atividade do projeto
+    * arquitetura
+        * identifica
+            * estrutura geral do sistema
+            * componentes principais
+            * relacionamentos
+    * interface
+        * define interfaces entre os componentes
+    * componentes
+        * como os componentes irao operar separadamente
+    * banco de dados
+        * estrutura de dados do sistema
+        * como sera representado no BD
+## Processo Prescritivo
+* atividades planejadas com antecedencia
+* progresso é medido em relacao ao plano
+### Processos Ágeis possuem fácul modificação no processo com planejamento incremental
+## modelo cascata
+* dirigido a planos
+    * com fases de especificação/desenvolvimento separadas e distintas
+* composto de 5 fases
+    * analise e definição de requisitos
+    * projeto de sistema e software
