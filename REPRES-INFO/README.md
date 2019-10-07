@@ -205,3 +205,8 @@
         * objeto possui ao longo de toda sua existencia
             * se perder essa propriedade ela deixa de existir
             * em todos os mundos possuiveis
+> 07/10
+# ontologia
+* artefato computacional
+# processo
+* acao
