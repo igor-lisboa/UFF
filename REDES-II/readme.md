@@ -76,3 +76,16 @@ cria uma nova label p ip
     * cdma (fixo)
 * csma/ca
 * n evita colisao mas trata
+
+> 01/11
+# latencia - atraso p pacote chegar no seu destino
+# gitter - latencia
+# throw put - taxa de transferencia
+# CBR - constant bit rate
+
+# Di = (1-ALFA) . Dj-i + ALFA(Ri -Ti)
+
+# Di=>delay estimado
+# ALFA=>small constant: 0.1
+# Ri=> time received
+
