@@ -89,3 +89,106 @@ cria uma nova label p ip
 # ALFA=>small constant: 0.1
 # Ri=> time received
 
+
+...
+
+
+# compressao de video
+
+## aproveitar da redundancia espacial
+* qtd de frames iguais => n mandar tds
+
+## aproveitar da redundancia temporal
+* se aproveitar das poucas altercoes dos frames de video => mandar apenas do q foi alterado de um frame para outro
+
+---------------------
+
+# quantizar
+
+* pegar o log de 2 dos niveis
+
+* ex: 1024 niveis = palavra de comprimento de 10 bits
+
+---------------------
+
+## qtd de bits por quadro
+
+* multiplicar linhas, colunas e comprimento em bits
+
+## taxa
+
+* qtd de bits por quadro multiplicado pelo numero de quadros
+
+---------------------
+
+# categorias de aplicacoes multimidea
+
+## fluxo de audio e video armazenado
+
+* dou play
+* pega no servidor
+* reproduz
+
+## voz e video sobre ip interativo
+
+## fluxo de audio e video continuo ao vivo
+
+* youtube
+
+---------------------
+
+# categorias de fluxo continuo
+
+## udp de fluxo continuo
+
+## http de fluxo de video
+
+## dash
+
+* fazer stream de qualidades diferentes onde a capacidade da rede define qual qualidade sera usada
+
+---------------------
+
+# buffer de recepcao tcp
+
+* janela deslizante
+
+# buffer de aplicacao
+
+* exibe midea e carrega buffer
+
+---------------------
+
+t = Q/R
+
+---------------------
+
+tamanho do buffer - B
+taxa - x
+
+---------------------
+
+r = onde consome
+t = onde gera
+v = atraso
+---------------------
+
+# audio e video usam o mesmo ssrc?
+* n, eles podem ser atribuitos para diferentes valores ssrc
+
+---------------------
+
+RTP e RTCP sao diferenciados pois usam portas distintas
+
+---------------------
+
+funcao do SIP  = acompanhar usuarios e seus enderecos de ip correspondentes, encaminha mensagens de invite p endereco de ip certo
+
+---------------------
+
+preemptivo => parar transmissao e emitir pacote com prioridade (utopico)
+
+---------------------
+
+FIFO => fila do starbucks
+PRIORIDADE ROUND ROBIN => mesclar o trafego (um da frente outro do outro lado dps)
