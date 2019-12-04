@@ -15,15 +15,19 @@
 # no-steal
 * nao precisa de UNDO
 * DO COMMIT AO FIM
+* flush p disco NÃO pode ser feito antes do commit
 
 # steal
 * DO BEGIN AO FIM
+* flush p disco pode ser feito antes do commit
 
 # force
 * DO BEGIN AO COMMIT
+* flush feito IMEDIATAMENTE no commit
 
 # no-force
 * DO BEGIN AO END
+* flush pode ser feito tempos após o commit
 
 ## read
 * nao aparece no log qnd a leitura suja n esta habilitada
@@ -32,12 +36,26 @@
 * tem que ser feito antes do REDO
 ** feito de cima p bx, refazendo escritas
 * TRANSACOES ATIVAS
+* recupera BFIMs para o disco
 
 # REDO
 * feito de bx p cima
 ** olha operacoes de escrita e recupera o before image
 * TRANSACOES COMMITADAS
+* recupera AFIMs para o disco
 
+# tipos de flush
+* Steal/No-Force
+** Undo/Redo
+* Steal/Force
+** Undo/No-redo
+* No-Steal/No-Force
+** Redo/No-undo
+* No-Steal/Force
+** No-undo/No-redo
+
+# Deferred Update
+* No Undo/Redo
 
 # ROLLBACK
 * UNDO
@@ -47,5 +65,3 @@
 
 # posicao inicial
 * valor da before imagem de todos os acessos
-
-
