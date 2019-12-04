@@ -34,25 +34,25 @@
 
 # UNDO
 * tem que ser feito antes do REDO
-** feito de cima p bx, refazendo escritas
+  * feito de cima p bx, refazendo escritas
 * TRANSACOES ATIVAS
 * recupera BFIMs para o disco
 
 # REDO
 * feito de bx p cima
-* * olha operacoes de escrita e recupera o before image
+  * olha operacoes de escrita e recupera o before image
 * TRANSACOES COMMITADAS
 * recupera AFIMs para o disco
 
 # tipos de flush
 * Steal/No-Force
-* * Undo/Redo
+  * Undo/Redo
 * Steal/Force
-* * Undo/No-redo
+  * Undo/No-redo
 * No-Steal/No-Force
-* * Redo/No-undo
+  * Redo/No-undo
 * No-Steal/Force
-* * No-undo/No-redo
+  * No-undo/No-redo
 
 # Deferred Update
 * No Undo/Redo
