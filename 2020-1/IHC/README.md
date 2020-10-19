@@ -4,7 +4,6 @@
 
 # Slides das aulas
 
-* https://drive.google.com/drive/u/1/folders/13DhXQ1HS1Rp5WtrvfemJmBclJuUYTRe4
 * https://drive.google.com/drive/u/1/folders/1Y5Hz6rpDZ3PSLOcPT5LMghpY63vSzB8T
 
 # Link das aulas Sincronas
