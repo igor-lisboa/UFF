@@ -13,7 +13,7 @@
 
 # Podcast
 
-* (O universo de UX com Caio César - Episódio 01)[https://soundcloud.com/movimento-ux/movimento-ux-episodio-1-caio-cesar]
+* [O universo de UX com Caio César - Episódio 01](https://soundcloud.com/movimento-ux/movimento-ux-episodio-1-caio-cesar)
 
 # Video-Aula com Exemplo de Aplicação do Método de Inspeção Semiótica e Outros Exemplos
 
