@@ -1,7 +1,17 @@
 # [Site do Curso](http://www.ic.uff.br/~andrea/mpn2020-1.html)
 
 # Slide Aulas
-* [Aula 1](https://drive.google.com/file/d/1H-ekEUVTIftKn28qrFZLYHNtHoRtbCC2/view)
+* [Aula 1- Apresentação do Curso](https://drive.google.com/file/d/1H-ekEUVTIftKn28qrFZLYHNtHoRtbCC2/view)
+* [Aula 2- Processos de Negócio](https://drive.google.com/file/d/1AZ6o9WmpfPC1HM1Q-f7DLZ2ATAzGgvOD/view)
+* [Aula 3 – Gestão de Processos de Negócio (BPM)](https://drive.google.com/file/d/1Gubw48gcbF2R3hV9jYiOYSFkp_N7dLmr/view)
+* [Aula 4 – Levantamento de Processos](https://drive.google.com/file/d/1ZNJYvtEWGScrQcAxYirXb6WvpAuQe1dL/view)
+* [Aula 5 – Modelagem de Processos e Notação BPMN](https://drive.google.com/file/d/1CI6SSJYMVCh7BhksgST5HUWKPYdKrfif/view)
+
+***
+
+* [Especificação do Trabalho](https://classroom.google.com/u/1/c/MTYzNzgxMzkxOTI5/m/MTc2OTk2MzA1OTQw/details)
+
+***
 
 # Resuminho
 
