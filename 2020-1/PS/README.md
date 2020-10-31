@@ -12,6 +12,7 @@
 1. [Fundamentos e princípios de projeto orientado a objetos](https://drive.google.com/file/d/1jxSX3QoCsEy3KW-NeFTuGBQ-mcHs_cgQ/view)
 2. [Projeto detalhado Diagrama de classes (de projeto)](https://drive.google.com/file/d/11d0-6wADUhUFMCCktIwRHOsCqy7QvIeU/view)
 3. [Projeto detalhado Diagramas de interação](https://drive.google.com/file/d/15xBMU_4WB_b-mZL2CHgMDYHhSF99IAkm/view)
+3. [Linhas de produto de software](https://drive.google.com/file/d/1jnKDBz5Uy6YsVCr4NjXQ3CY5oGwIIL59/view)
 
 ***
 
@@ -21,6 +22,11 @@
 * [Video Aula de Projeto Detalhado OO](http://videoaula.rnp.br/v.php?f=/cederj/sistemas_comp/ead05022/Aula_007/Aula_007.xml)
 * [Video Aula de Princípios de Projeto OO](http://videoaula.rnp.br/v.php?f=/cederj/sistemas_comp/ead05022/Aula_008/Aula_008.xml)
 * [Video Aula Heurísticas POO](http://videoaula.rnp.br/v.php?f=/cederj/sistemas_comp/ead05022/Aula_009/Aula_009.xml)
+* [Video Aula Padrões de Software](http://videoaula.rnp.br/v.php?f=/cederj/sistemas_comp/ead05022/Aula_012/Aula_012.xml)
+* [Video Aula Alguns Padrões GRASP](http://videoaula.rnp.br/v.php?f=/cederj/sistemas_comp/ead05022/Aula_013/Aula_013.xml)
+* [Video Aula Alguns Padrões GoF](http://videoaula.rnp.br/v.php?f=/cederj/sistemas_comp/ead05022/Aula_014/Aula_014.xml)
+* [Video Aula Frameworks](http://videoaula.rnp.br/v.php?f=/cederj/sistemas_comp/ead05022/Aula_011/Aula_011.xml)
+* [Video Aula Arquitetura e Projeto de Sistemas II](http://videoaula.rnp.br/v.php?f=/cederj/sistemas_comp/ead05022/Aula_018/Aula_018.xml)
 
 * [Video Aula Arquitetura](https://drive.google.com/file/d/1kzqNAnyEitQR3Dj1537k4ObHMEVpkQez/view)
 
