@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        canvas {
+            border: 1px solid #000000;
+            background-image: url('assets/fundo.jpg');
+        }
+    </style>
+</head>
+
+<body>
+    <img style="display: none;" src="assets/arvore.png"/>
+    <canvas></canvas>
+    <script>
+
+        window.onload = function () {
+
+            var canvas = document.querySelector('canvas');
+            canvas.width = 500;
+            canvas.height = 300;
+            var context = canvas.getContext('2d');
+
+            var image = document.querySelector('img');
+
+            context.drawImage(image, 40, 40);
+
+        };
+
+    </script>
+
+</body>
+
+</html>
