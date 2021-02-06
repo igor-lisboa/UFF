@@ -1,18 +1,19 @@
 void setup()
 {
-    pinMode(LED_BUILTIN, OUTPUT);
+    //Define a porta do led como saida
+    pinMode(11, OUTPUT);
 }
 
 void loop()
 {
     //Acende o led
-    digitalWrite(LED_BUILTIN, HIGH);
+    digitalWrite(11, HIGH);
 
     //Aguarda intervalo de tempo em milissegundos
     delay(1000);
 
     //Apaga o led
-    digitalWrite(LED_BUILTIN, LOW);
+    digitalWrite(11, LOW);
 
     //Aguarda intervalo de tempo em milissegundos
     delay(1000);
