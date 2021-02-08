@@ -27,6 +27,20 @@
 
             context.drawImage(image, 40, 40);
 
+	
+			var circle = new Path2D();
+			circle.moveTo(20, 20);
+			circle.arc(100, 35, 35, 0, 2 * Math.PI);
+			context.fill(circle);
+			
+			
+			// Filled triangle
+			context.beginPath();
+			context.moveTo(400,100);
+			context.lineTo(420,80);
+			context.lineTo(420,120);
+			context.fill();
+
         };
 
     </script>
