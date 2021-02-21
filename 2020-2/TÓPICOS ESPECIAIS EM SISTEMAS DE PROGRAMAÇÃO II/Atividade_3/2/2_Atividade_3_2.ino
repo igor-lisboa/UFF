@@ -1,4 +1,4 @@
-// Potentiometer is connected to GPIO 34 (Analog ADC1_CH6) 
+// Potentiometer is connected to GPIO 34 (Analog ADC1_CH6)
 const int potPin = 34;
 
 // variable for storing the potentiometer value
@@ -13,6 +13,11 @@ void setup() {
 void loop() {
   // Reading potentiometer value
   potValue = analogRead(potPin);
-  Serial.println(potValue);
+  Serial.println(regraTres(potValue));
   delay(500);
+}
+
+
+float regraTres(int numero) {
+  return (numero * 3.3) / 4095;
 }
