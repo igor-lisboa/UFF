@@ -1,0 +1,1 @@
+Os resultados foram diferentes pois a saída PWM sai em formato de onda quadrada  já a DAC não apresenta formato de onda quadrado, permitindo multiplos valores ao invés de apenas ligado ou desligado.
