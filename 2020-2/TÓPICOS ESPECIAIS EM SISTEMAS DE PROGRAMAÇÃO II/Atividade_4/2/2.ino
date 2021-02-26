@@ -1,31 +1,16 @@
-// the number of the LED pin
-const int ledPin = 16;  // 16 corresponds to GPIO16
+const int ledPin = 26;
 
-// setting PWM properties
-const int freq = 5000;
-const int ledChannel = 0;
-const int resolution = 8;
- 
-void setup(){
-  // configure LED PWM functionalitites
-  ledcSetup(ledChannel, freq, resolution);
-  
-  // attach the channel to the GPIO to be controlled
-  ledcAttachPin(ledPin, ledChannel);
+void setup() {
 }
- 
+
 void loop(){
-  // increase the LED brightness
-  for(int dutyCycle = 5; dutyCycle <= 255; dutyCycle++){   
-    // changing the LED brightness with PWM
-    ledcWrite(ledChannel, dutyCycle);
-    delay(4);
+  for(int dutyCycle = 150; dutyCycle <= 255; dutyCycle++){   
+    dacWrite(ledPin, dutyCycle);
+    delay(10);
   }
 
-  // decrease the LED brightness
-  for(int dutyCycle = 255; dutyCycle >= 5; dutyCycle--){
-    // changing the LED brightness with PWM
-    ledcWrite(ledChannel, dutyCycle);   
-    delay(4);
+  for(int dutyCycle = 255; dutyCycle >= 150; dutyCycle--){
+    dacWrite(ledPin, dutyCycle);   
+    delay(10);
   }
 }
