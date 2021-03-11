@@ -1,0 +1,2 @@
+Apesar do tempo de execução de cada tarefa variar por causa do RTOS, a construção do código e funcionalidade das tarefas foram bem mais simples de serem feitas usando FreeRTOS e threads.
+Fazendo sem o mesmo, foi necessário a criação de uma função separada para acender ou apagar cada led, além das verificações para encaixar corretamente a frequência deles.
