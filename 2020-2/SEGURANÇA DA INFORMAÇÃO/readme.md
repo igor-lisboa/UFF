@@ -13,3 +13,16 @@
 * [Listas de Exercício Criptografia - Prof. Raphael Machado.pdf](https://drive.google.com/open?id=1FmH7mDaX4jFGcVGn7eXU45xUg7l9aCmA&authuser=1)
 * [Listas de Exercício Criptografia (GABARITO) - Prof. Raphael Machado - P1 v2.pdf](https://drive.google.com/open?id=1TeAxr4sKoJBGf7f8dIfWklpSSP-GIREr&authuser=1)
 
+
+# Itens resumo
+* Sistema de informação =~ Contexto Cibernético
+
+# Cifras de Stream vs Cifras de Bloco
+* Diferença:
+    * Cifra de Stream
+        * Mensagem processada Bit a Bit
+        * chegam em fila
+        * sao processados individualmente
+    * cifra de blocos
+        * bits processados em paralelo
+        * valores na ordem de centenas de bits
