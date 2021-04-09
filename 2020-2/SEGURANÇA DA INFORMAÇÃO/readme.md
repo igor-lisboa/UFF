@@ -26,3 +26,8 @@
     * cifra de blocos
         * bits processados em paralelo
         * valores na ordem de centenas de bits
+
+
+***
+
+# 2 PARTE DO CURSO
