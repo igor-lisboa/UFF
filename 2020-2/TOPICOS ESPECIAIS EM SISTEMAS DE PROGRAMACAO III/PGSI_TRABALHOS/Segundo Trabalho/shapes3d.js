@@ -628,7 +628,7 @@ class MySphere extends Shape3d{
 
 class Mouse{
 
-  constructor(program,gl,hipRotVec,headRotVec,legRotVec){
+  constructor(program,gl,hipRotVec,headRotVec){
     this.program = program;
     this.gl = gl;
     this.cube = new MyCube(this.program,this.gl,undefined);
@@ -637,7 +637,6 @@ class Mouse{
     this.sphere2 = new MySphere(this.program,this.gl,1.0,4,4,new Color(0.0,0.0,0.5));
     this._hipRotationVector = hipRotVec;
     this._headRotationVector = headRotVec;
-    this._legRotationVector = legRotVec;
   }
 
   get hipRotationVector(){return this._hipRotationVector;}
@@ -647,10 +646,6 @@ class Mouse{
   get headRotationVector(){return this._headRotationVector;}
 
   set headRotationVector(hipRotVec){this._headRotationVector = hipRotVec;}
-
-  get legRotationVector(){return this._legRotationVector;}
-
-  set legRotationVector(hipRotVec){this._legRotationVector = hipRotVec;}
 
 
   drawHead(modelViewMatrix){
@@ -761,9 +756,6 @@ class Mouse{
       var tv = vec3.create();
       vec3.set(tv, 0.0, 0.0, 0.0);
       mat4.translate(modelViewMatrix,modelViewMatrix,tv);
-      mat4.rotateX(modelViewMatrix,modelViewMatrix, this._legRotationVector[0] * Math.PI / 180);
-      mat4.rotateY(modelViewMatrix,modelViewMatrix, this._legRotationVector[1] * Math.PI / 180);
-      mat4.rotateZ(modelViewMatrix,modelViewMatrix, this._legRotationVector[2] * Math.PI / 180);
       myMatrixStack.push(mat4.clone(modelViewMatrix));
         var s = vec3.create();
         vec3.set(s,0.5,1.5,1.0);

@@ -129,8 +129,6 @@ sob a licença acima especificada.
         rotationVector = [0.0,0.0,0.0],
         //Define o vetor para rotação da cabeça
         headRotationVector = [15.0,10.0,5.0],
-        //Define o vetor para rotação das pernas
-        legRotationVector = [15.0,10.0,5.0],
         hipRotationVector =  [-15.0,10.0,0.0],
         //Criar a matriz de camera e modelagem 4x4
         modelViewMatrix,
@@ -280,7 +278,7 @@ sob a licença acima especificada.
       myMatrixStack = new MyStack();
     
       cube = new MyCube(program,gl,undefined);
-      mouse = new Mouse(program,gl,hipRotationVector,headRotationVector,legRotationVector);
+      mouse = new Mouse(program,gl,hipRotationVector,headRotationVector);
 
       //
       var tv = vec3.create();
@@ -412,25 +410,6 @@ sob a licença acima especificada.
                 state['Rotate Hip Z']
               ];
               mouse.hipRotationVector = hipRotationVector;
-              render();  
-
-            }
-          };
-          return result;
-        }, {}),
-
-
-        ...['Rotate Leg X', 'Rotate Leg Y', 'Rotate Leg Z'].reduce((result, name, i) => {
-          result[name] = {
-            value: legRotationVector[i],
-            min: -45, max: 45, step: 0.000001,
-            onChange(v, state) {
-              legRotationVector = [
-                state['Rotate Leg X'],
-                state['Rotate Leg Y'],
-                state['Rotate Leg Z']
-              ];
-              mouse.legRotationVector = legRotationVector;
               render();  
 
             }
