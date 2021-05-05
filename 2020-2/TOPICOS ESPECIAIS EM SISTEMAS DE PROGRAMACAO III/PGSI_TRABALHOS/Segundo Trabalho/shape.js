@@ -95,7 +95,7 @@ function intersect(x,y,x0,y0,x1,y1){
     var ymax = y0>y1?y0:y1;
     
 
-    if ((x_int>=x)&&(x_int>=xmin)&&(x_int<=xmax)&&(y_int>=ymin)&&(y_int<=ymax)){
+    if ((x_int>=x)&&(x_int>=xmin)&&(x_int<=xmax)&&(y_int>=ymin)&&(y_int<ymax)){
             num_intersec = 1;
     } 
 
@@ -473,8 +473,9 @@ class Circle extends Shape{
 
 
 class Polygon extends Shape{
-    constructor(id,type,color,borderColor){
+    constructor(id,type,color,borderColor,width){
         super(id,type,color,borderColor);
+        this.width = width;
         this._verticesList = [];
     }
 
