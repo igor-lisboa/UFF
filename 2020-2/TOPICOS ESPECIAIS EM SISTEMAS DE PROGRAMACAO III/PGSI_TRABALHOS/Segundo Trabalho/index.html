@@ -130,7 +130,10 @@ sob a licença acima especificada.
         //Define o vetor para rotação da cabeça
         headRotationVector = [15.0,10.0,5.0],
         //Define o vetor para rotação das pernas
-        legRotationVector = [15.0,10.0,5.0],
+        legOneRotationVector = [15.0,10.0,5.0],
+        legTwoRotationVector = [15.0,10.0,5.0],
+        legThreeRotationVector = [15.0,10.0,5.0],
+        legFourRotationVector = [15.0,10.0,5.0],
         hipRotationVector =  [-15.0,10.0,0.0],
         //Criar a matriz de camera e modelagem 4x4
         modelViewMatrix,
@@ -280,7 +283,7 @@ sob a licença acima especificada.
       myMatrixStack = new MyStack();
     
       cube = new MyCube(program,gl,undefined);
-      mouse = new Mouse(program,gl,hipRotationVector,headRotationVector,legRotationVector);
+      mouse = new Mouse(program,gl,hipRotationVector,headRotationVector,legOneRotationVector,legTwoRotationVector,legThreeRotationVector,legFourRotationVector);
 
       //
       var tv = vec3.create();
@@ -420,17 +423,71 @@ sob a licença acima especificada.
         }, {}),
 
 
-        ...['Rotate Leg X', 'Rotate Leg Y', 'Rotate Leg Z'].reduce((result, name, i) => {
+        ...['Rotate Leg 1 X', 'Rotate Leg 1 Y', 'Rotate Leg 1 Z'].reduce((result, name, i) => {
           result[name] = {
-            value: legRotationVector[i],
+            value: legOneRotationVector[i],
             min: -45, max: 45, step: 0.000001,
             onChange(v, state) {
-              legRotationVector = [
-                state['Rotate Leg X'],
-                state['Rotate Leg Y'],
-                state['Rotate Leg Z']
+              legOneRotationVector = [
+                state['Rotate Leg 1 X'],
+                state['Rotate Leg 1 Y'],
+                state['Rotate Leg 1 Z']
               ];
-              mouse.legRotationVector = legRotationVector;
+              mouse.legOneRotationVector = legOneRotationVector;
+              render();  
+
+            }
+          };
+          return result;
+        }, {}),
+
+        ...['Rotate Leg 2 X', 'Rotate Leg 2 Y', 'Rotate Leg 2 Z'].reduce((result, name, i) => {
+          result[name] = {
+            value: legTwoRotationVector[i],
+            min: -45, max: 45, step: 0.000001,
+            onChange(v, state) {
+              legTwoRotationVector = [
+                state['Rotate Leg 2 X'],
+                state['Rotate Leg 2 Y'],
+                state['Rotate Leg 2 Z']
+              ];
+              mouse.legTwoRotationVector = legTwoRotationVector;
+              render();  
+
+            }
+          };
+          return result;
+        }, {}),
+
+        ...['Rotate Leg 3 X', 'Rotate Leg 3 Y', 'Rotate Leg 3 Z'].reduce((result, name, i) => {
+          result[name] = {
+            value: legThreeRotationVector[i],
+            min: -45, max: 45, step: 0.000001,
+            onChange(v, state) {
+              legThreeRotationVector = [
+                state['Rotate Leg 3 X'],
+                state['Rotate Leg 3 Y'],
+                state['Rotate Leg 3 Z']
+              ];
+              mouse.legThreeRotationVector = legThreeRotationVector;
+              render();  
+
+            }
+          };
+          return result;
+        }, {}),
+
+        ...['Rotate Leg 4 X', 'Rotate Leg 4 Y', 'Rotate Leg 4 Z'].reduce((result, name, i) => {
+          result[name] = {
+            value: legFourRotationVector[i],
+            min: -45, max: 45, step: 0.000001,
+            onChange(v, state) {
+              legFourRotationVector = [
+                state['Rotate Leg 4 X'],
+                state['Rotate Leg 4 Y'],
+                state['Rotate Leg 4 Z']
+              ];
+              mouse.legFourRotationVector = legFourRotationVector;
               render();  
 
             }

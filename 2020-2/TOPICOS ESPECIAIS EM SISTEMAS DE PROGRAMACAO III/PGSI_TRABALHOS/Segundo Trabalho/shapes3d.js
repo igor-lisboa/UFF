@@ -628,7 +628,7 @@ class MySphere extends Shape3d{
 
 class Mouse{
 
-  constructor(program,gl,hipRotVec,headRotVec,legRotVec){
+  constructor(program,gl,hipRotVec,headRotVec,legOneRotVec,legTwoRotVec,legThreeRotVec,legFourRotVec){
     this.program = program;
     this.gl = gl;
     this.cube = new MyCube(this.program,this.gl,undefined);
@@ -637,7 +637,10 @@ class Mouse{
     this.sphere2 = new MySphere(this.program,this.gl,1.0,4,4,new Color(0.0,0.0,0.5));
     this._hipRotationVector = hipRotVec;
     this._headRotationVector = headRotVec;
-    this._legRotationVector = legRotVec;
+    this._legOneRotationVector = legOneRotVec;
+    this._legTwoRotationVector = legTwoRotVec;
+    this._legThreeRotationVector = legThreeRotVec;
+    this._legFourRotationVector = legFourRotVec;
   }
 
   get hipRotationVector(){return this._hipRotationVector;}
@@ -648,9 +651,21 @@ class Mouse{
 
   set headRotationVector(hipRotVec){this._headRotationVector = hipRotVec;}
 
-  get legRotationVector(){return this._legRotationVector;}
+  get legOneRotationVector(){return this._legOneRotationVector;}
 
-  set legRotationVector(hipRotVec){this._legRotationVector = hipRotVec;}
+  set legOneRotationVector(hipRotVec){this._legOneRotationVector = hipRotVec;}
+
+  get legTwoRotationVector(){return this._legTwoRotationVector;}
+
+  set legTwoRotationVector(hipRotVec){this._legTwoRotationVector = hipRotVec;}
+
+  get legThreeRotationVector(){return this._legThreeRotationVector;}
+
+  set legThreeRotationVector(hipRotVec){this._legThreeRotationVector = hipRotVec;}
+
+  get legFourRotationVector(){return this._legFourRotationVector;}
+
+  set legFourRotationVector(hipRotVec){this._legFourRotationVector = hipRotVec;}
 
 
   drawHead(modelViewMatrix){
@@ -761,9 +776,6 @@ class Mouse{
       var tv = vec3.create();
       vec3.set(tv, 0.0, 0.0, 0.0);
       mat4.translate(modelViewMatrix,modelViewMatrix,tv);
-      mat4.rotateX(modelViewMatrix,modelViewMatrix, this._legRotationVector[0] * Math.PI / 180);
-      mat4.rotateY(modelViewMatrix,modelViewMatrix, this._legRotationVector[1] * Math.PI / 180);
-      mat4.rotateZ(modelViewMatrix,modelViewMatrix, this._legRotationVector[2] * Math.PI / 180);
       myMatrixStack.push(mat4.clone(modelViewMatrix));
         var s = vec3.create();
         vec3.set(s,0.5,1.5,1.0);
@@ -808,6 +820,9 @@ class Mouse{
       var tv = vec3.create();
       vec3.set(tv, -2.0, 0.0, 0.0);
       mat4.translate(modelViewMatrix,modelViewMatrix,tv);
+      mat4.rotateX(modelViewMatrix,modelViewMatrix, this._legOneRotationVector[0] * Math.PI / 180);
+      mat4.rotateY(modelViewMatrix,modelViewMatrix, this._legOneRotationVector[1] * Math.PI / 180);
+      mat4.rotateZ(modelViewMatrix,modelViewMatrix, this._legOneRotationVector[2] * Math.PI / 180);
       var s = vec3.create();
       vec3.set(s,1.1,1.1,1.1);
       mat4.scale(modelViewMatrix,modelViewMatrix,s)
@@ -824,6 +839,9 @@ class Mouse{
       var tv = vec3.create();
       vec3.set(tv, 2.0, 0.0, 0.0);
       mat4.translate(modelViewMatrix,modelViewMatrix,tv);
+      mat4.rotateX(modelViewMatrix,modelViewMatrix, this._legTwoRotationVector[0] * Math.PI / 180);
+      mat4.rotateY(modelViewMatrix,modelViewMatrix, this._legTwoRotationVector[1] * Math.PI / 180);
+      mat4.rotateZ(modelViewMatrix,modelViewMatrix, this._legTwoRotationVector[2] * Math.PI / 180);
       var s = vec3.create();
       vec3.set(s,1.1,1.1,1.1);
       mat4.scale(modelViewMatrix,modelViewMatrix,s)
@@ -839,6 +857,9 @@ class Mouse{
       var tv = vec3.create();
       vec3.set(tv, -2.0, -0.25, 0.0);
       mat4.translate(modelViewMatrix,modelViewMatrix,tv);
+      mat4.rotateX(modelViewMatrix,modelViewMatrix, this._legThreeRotationVector[0] * Math.PI / 180);
+      mat4.rotateY(modelViewMatrix,modelViewMatrix, this._legThreeRotationVector[1] * Math.PI / 180);
+      mat4.rotateZ(modelViewMatrix,modelViewMatrix, this._legThreeRotationVector[2] * Math.PI / 180);
       setProgramMatrices(this.program,modelViewMatrix);
       modelViewMatrix = this.drawLeg(modelViewMatrix);
     modelViewMatrix = myMatrixStack.pop(); 
@@ -851,6 +872,9 @@ class Mouse{
       var tv = vec3.create();
       vec3.set(tv, 2.0, -0.25, 0.0);
       mat4.translate(modelViewMatrix,modelViewMatrix,tv);
+      mat4.rotateX(modelViewMatrix,modelViewMatrix, this._legFourRotationVector[0] * Math.PI / 180);
+      mat4.rotateY(modelViewMatrix,modelViewMatrix, this._legFourRotationVector[1] * Math.PI / 180);
+      mat4.rotateZ(modelViewMatrix,modelViewMatrix, this._legFourRotationVector[2] * Math.PI / 180);
       setProgramMatrices(this.program,modelViewMatrix);
       modelViewMatrix = this.drawLeg(modelViewMatrix);
     modelViewMatrix = myMatrixStack.pop(); 
