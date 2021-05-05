@@ -69,14 +69,19 @@ void loop() {
       http.addHeader("Content-Type", "application/json");
       //http.addHeader("Cache-Control", "no-cache");
       //http.addHeader("Host", "iot-guerra-alexa-trab-final.herokuapp.com");
+      // Converting to an integer so that Alexa can read it
+      int intH = (int)h;
+      int intT = (int)t;
+      int intHIC = (int)hic;
       // JSON data to send with HTTP POST
-      //String httpRequestData = "{\"itens\":\"" + apiKey + "\",\"field1\":\"" + "teste" + "\"}";
-      String httpRequestData = "{\"itens\" : [\"A umidade do quarto está em: " + String(h) + "%.\" , \"A temperatura do quarto está em: " + String(t) + "ºC.\" , \"O índice de calor do quarto está em: " + String(hic) + "ºC.\"]}";
+      String httpRequestData = "{\"itens\" : [\"A umidade do quarto está em: " + String(intH) + "% .\" , \"A temperatura do quarto está em: " + String(intT) + "ºC .\" , \"O índice de calor do quarto está em: " + String(intHIC) + "ºC .\"]}";
       String size = String(httpRequestData.length());
       //http.addHeader("Content-Length", size);
       // Send HTTP POST request
       int httpResponseCode = http.POST(httpRequestData);
 
+      Serial.print("HTTP Request data: ");
+      Serial.println(httpRequestData);
       Serial.print("HTTP Response code: ");
       Serial.println(httpResponseCode);
 
