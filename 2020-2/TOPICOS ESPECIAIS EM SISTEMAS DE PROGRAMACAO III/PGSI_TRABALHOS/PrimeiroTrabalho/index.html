@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primeiro Trabalho</title>
+
+    <!-- libraries -->
+    <script type="text/javascript" src="/common/lib/dat.gui.js"></script>
+    <script type="text/javascript" src="/common/lib/gl-matrix.js"></script>
+    <script type="text/javascript" src="/common/js/utils.js"></script>
+
+    <style>
+        html,
+        body {
+            margin: 0px;
+            padding: 0px;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+
+    <script id="vertex-shader" type="x-shader/x-vertex">
+        attribute vec4 vPosition;
+        attribute vec4 vColor;
+        varying vec4 fColor;
+        void main() {
+            gl_Position = vPosition;
+            fColor = vColor;
+        }
+    </script>
+
+    <script id="fragment-shader" type="x-shader/x-fragment">
+        precision mediump float;
+        varying vec4 fColor;
+        void main() {
+            gl_FragColor = fColor;
+        }
+    </script>
+
+    <script type="text/javascript" src='./js/webgl-utils.js'></script>
+    <script type="text/javascript" src='./js/initShaders.js'></script>
+    <script type="text/javascript" src='./js/MV.js'></script>
+</head>
+
+<body>
+    <canvas id="gl-canvas" width="1400" height="512">
+        Canvas não permitido
+    </canvas>
+    <input type="file" id="uploadFile" style="display: none;" />
+    <script type="text/javascript">
+        "use strict";
+
+        class Scene {
+            canvas;
+            gl;
+            maxNumVertices = 20000;
+            delay = 50; // tempo usado p desenhar na tela itens feitos
+            corSelecionada = "#000000";
+            tipoPrimitivo = "Livre";
+            start = [0];
+            infoPosicao = {
+                x: 0, y: 0
+            };
+            mouseClicked = false;
+            utils;
+            canvasId;
+            coordenadasLinha = [];
+            shapeList = [];
+            primitiveTypes = { POINT: 1, CIRCLE: 2, LINE: 3, RECTANGLE: 4, POLYGON: 5, FREE: 6 };
+            idShapeAtual = null;
+            bufferId;
+            cBufferId;
+            indexVertices = 0;
+            program;
+            ultimoIndexVerticeBuferizado = -1;
+
+            constructor(canvasId, utils, shapeList = []) {
+                this.canvasId = canvasId;
+                this.utils = utils;
+                try {
+                    if (shapeList.length == 0) {
+                        shapeList = localStorage.getItem('shapeList');
+                        if (shapeList == null) {
+                            shapeList = [];
+                        } else {
+                            shapeList = JSON.parse(shapeList);
+                        }
+                    }
+                } catch (e) {
+                    console.log(e);
+                    shapeList = [];
+                }
+
+                this.init();
+
+                this.setShapeList(shapeList);
+            }
+
+            populaBuffer(index, x, y, cor) {
+                var bufferIn;
+
+                bufferIn = vec2(x, y);
+                this.gl.bindBuffer(this.gl.ARRAY_BUFFER, this.bufferId);
+                this.gl.bufferSubData(this.gl.ARRAY_BUFFER, 8 * index, flatten(bufferIn));
+
+                bufferIn = vec4(cor.r, cor.g, cor.b, 1.0);
+                this.gl.bindBuffer(this.gl.ARRAY_BUFFER, this.cBufferId);
+                this.gl.bufferSubData(this.gl.ARRAY_BUFFER, 16 * index, flatten(bufferIn));
+            }
+
+            init() {
+                this.canvas = document.getElementById(this.canvasId);
+                this.utils.autoResizeCanvas(this.canvas);
+
+                this.gl = WebGLUtils.setupWebGL(this.canvas);
+                if (!this.gl) {
+                    alert("WebGL não permitido!");
+                }
+
+                this.canvas.addEventListener("mousedown", (event) => {
+                    if (this.tipoPrimitivo == "Livre") {
+                        this.mouseClicked = true;
+                    } else if (this.tipoPrimitivo == "Linha") {
+                        if (this.coordenadasLinha.length != 2) {
+                            this.coordenadasLinha.push(this.infoPosicao);
+                            // se ja chegou a 2 cordenadas joga p canvas
+                            if (this.coordenadasLinha.length == 2) {
+                                var novoShape = {
+                                    id: this.shapeList.length,
+                                    tipo: 3,
+                                    vertices: [],
+                                    cor: this.hexToRgb(this.corSelecionada)
+                                };
+
+                                this.coordenadasLinha.forEach(coordenada => {
+                                    var vertice = {
+                                        indexVertice: this.indexVertices,
+                                        coordenadas: coordenada
+                                    };
+                                    this.indexVertices++;
+                                    novoShape.vertices.push(vertice);
+                                });
+
+                                this.pushShapeList(novoShape);
+
+                                this.coordenadasLinha = [];
+                            }
+                        }
+                    } else if (this.tipoPrimitivo == "Ponto") {
+                        this.coordenadasLinha.push(this.infoPosicao);
+                        // se ja chegou a 2 cordenadas joga p canvas
+                        var novoShape = {
+                            id: this.shapeList.length,
+                            tipo: 1,
+                            vertices: [],
+                            cor: this.hexToRgb(this.corSelecionada)
+                        };
+
+                        var vertice = {
+                            indexVertice: this.indexVertices,
+                            coordenadas: this.infoPosicao
+                        };
+                        this.indexVertices++;
+                        novoShape.vertices.push(vertice);
+
+                        this.pushShapeList(novoShape);
+
+                        this.coordenadasLinha = [];
+                    }
+                });
+
+                this.canvas.addEventListener("mouseup", (event) => {
+                    if (this.tipoPrimitivo == "Livre") {
+                        this.mouseClicked = false;
+                        this.idShapeAtual = null;
+                    }
+                });
+
+                this.canvas.addEventListener("mousemove", (event) => {
+                    this.infoPosicao = {
+                        x: 2 * event.clientX / this.canvas.width - 1,
+                        y: 2 * (this.canvas.height - event.clientY) / this.canvas.height - 1
+                    };
+                    if (this.tipoPrimitivo == "Livre") {
+                        if (this.mouseClicked) {
+
+                            if (this.idShapeAtual == null) {
+                                this.idShapeAtual = this.shapeList.length;
+                                var novoShape = {
+                                    id: this.idShapeAtual,
+                                    tipo: 6,
+                                    vertices: [],
+                                    cor: this.hexToRgb(this.corSelecionada)
+                                };
+
+                                this.pushShapeList(novoShape);
+                            }
+
+                            var vertice = {
+                                indexVertice: this.indexVertices,
+                                coordenadas: this.infoPosicao
+                            };
+                            this.indexVertices++;
+
+                            this.pushShapeListVertice(this.idShapeAtual, vertice);
+                        }
+                    }
+                });
+
+                this.gl.viewport(0, 0, this.canvas.width, this.canvas.height);
+                this.gl.clearColor(0.9, 0.9, 0.9, 1.0);
+                this.gl.clear(this.gl.COLOR_BUFFER_BIT);
+
+                //
+                //  carrega shaders e inicia buffers
+                //
+                this.program = initShaders(this.gl, "vertex-shader", "fragment-shader");
+                this.gl.useProgram(this.program);
+
+                this.iniciaBuffers();
+
+                this.render();
+
+                this.initControls();
+            }
+
+            iniciaBuffers() {
+                this.bufferId = this.gl.createBuffer();
+                this.gl.bindBuffer(this.gl.ARRAY_BUFFER, this.bufferId);
+                this.gl.bufferData(this.gl.ARRAY_BUFFER, 8 * this.maxNumVertices, this.gl.STATIC_DRAW);
+                var vPos = this.gl.getAttribLocation(this.program, "vPosition");
+                this.gl.vertexAttribPointer(vPos, 2, this.gl.FLOAT, false, 0, 0);
+                this.gl.enableVertexAttribArray(vPos);
+
+                this.cBufferId = this.gl.createBuffer();
+                this.gl.bindBuffer(this.gl.ARRAY_BUFFER, this.cBufferId);
+                this.gl.bufferData(this.gl.ARRAY_BUFFER, 16 * this.maxNumVertices, this.gl.STATIC_DRAW);
+                var vColor = this.gl.getAttribLocation(this.program, "vColor");
+                this.gl.vertexAttribPointer(vColor, 4, this.gl.FLOAT, false, 0, 0);
+                this.gl.enableVertexAttribArray(vColor);
+            }
+
+            downloadFile(filename, text) {
+                var element = document.createElement('a');
+                element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+                element.setAttribute('download', filename);
+
+                element.style.display = 'none';
+                document.body.appendChild(element);
+
+                element.click();
+
+                document.body.removeChild(element);
+            }
+
+            carregaShapeListDeUmArquivo() {
+                var fileInput = document.getElementById("uploadFile");
+                fileInput.click();
+                fileInput.addEventListener('change', event => {
+                    const fileList = event.target.files;
+
+                    var fr = new FileReader();
+                    fr.onload = () => {
+                        this.setShapeList(JSON.parse(fr.result));
+                    }
+
+                    fr.readAsText(fileList[0]);
+                });
+            }
+
+            pushShapeList(novoShapeList) {
+                this.shapeList.push(novoShapeList);
+                this.buferizaVertices(novoShapeList.vertices, novoShapeList.cor);
+            }
+
+            buferizaVertices(vertices = [], cor = { r: 0, g: 0, b: 0 }) {
+
+                // filtra pra so pegar os nao buferizados
+                vertices = vertices.filter(vertice => vertice.indexVertice > this.ultimoIndexVerticeBuferizado);
+
+                // percorre lista de vertices
+                vertices.forEach(vertice => {
+                    this.populaBuffer(vertice.indexVertice, vertice.coordenadas.x, vertice.coordenadas.y, cor);
+                    this.ultimoIndexVerticeBuferizado = vertice.indexVertice;
+                });
+            }
+
+            pushShapeListVertice(shapeListIndex, vertice) {
+                this.shapeList[shapeListIndex].vertices.push(vertice);
+
+                this.buferizaVertices(this.shapeList[shapeListIndex].vertices, this.shapeList[shapeListIndex].cor);
+            }
+
+            setShapeList(shapeList = []) {
+                this.shapeList = shapeList;
+                this.ultimoIndexVerticeBuferizado = -1;
+                this.shapeList.forEach(shape => {
+                    this.buferizaVertices(shape.vertices, shape.cor);
+                });
+            }
+
+            render() {
+                this.gl.clear(this.gl.COLOR_BUFFER_BIT);
+
+
+                for (var i = 0; i <= this.shapeList.length; i++) {
+                    if (this.shapeList[i] != undefined) {
+                        if (this.shapeList[i].vertices.length > 0) {
+                            this.gl.drawArrays(this.gl.LINE_STRIP, this.shapeList[i].vertices[0].indexVertice, this.shapeList[i].vertices.length);
+                        }
+                    }
+                }
+
+
+                setTimeout(
+                    () => {
+                        requestAnimFrame(() => { this.render() });
+                    }, this.delay
+                );
+            }
+
+            colorItemMaxOne(valor) {
+                return valor / 255;
+            }
+
+            hexToRgb(hex) {
+                var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+                return result ? {
+                    r: this.colorItemMaxOne(parseInt(result[1], 16)),
+                    g: this.colorItemMaxOne(parseInt(result[2], 16)),
+                    b: this.colorItemMaxOne(parseInt(result[3], 16))
+                } : null;
+            }
+
+            initControls() {
+                this.utils.configureControls({
+                    'Ferramentas': {
+                        'Limpar': () => {
+                            this.setShapeList([]);
+                        },
+                    },
+                    'Ferramentas de Arquivo': {
+                        'Salvar': () => {
+                            console.log(this.shapeList);
+                            const shapeListString = JSON.stringify(this.shapeList);
+                            localStorage.setItem('shapeList', shapeListString);
+                            const nomePadrao = 'shapeList';
+                            let nomeEscolhido = prompt("Qual nome deseja dar ao arquivo?", nomePadrao);
+                            if (nomeEscolhido != null) {
+                                this.downloadFile(nomeEscolhido + ".json", shapeListString);
+                            }
+                        },
+                        'Carregar': () => {
+                            this.carregaShapeListDeUmArquivo();
+                        }
+                    },
+                    'Propriedades': {
+                        'Cor': {
+                            value: this.corSelecionada,
+                            onChange: v => this.corSelecionada = v
+                        },
+                        'Tipo Primitivo': {
+                            value: this.tipoPrimitivo,
+                            options: ['Ponto', 'Linha', 'Círculo', 'Retângulo', 'Polígono', 'Livre'],
+                            onChange: v => this.tipoPrimitivo = v
+                        }
+                    }
+                });
+            }
+        }
+        window.onload = new Scene("gl-canvas", utils);
+    </script>
+
+</html>
